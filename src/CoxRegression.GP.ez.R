@@ -4,8 +4,67 @@
 #      Cox regression using clinical data and .cls file
 #        Yujin Hoshida (Broad Institute)
 ###########################################################################
+parseCmdLine <- function(...)
+{
+	input.clin.data.filename= ""
+    input.cls.filename="NA"
+    output.file=""
+    response.variable="NA"
+    variable.continuous="NA"
+    variable.category="NA"
+    variable.interaction.terms="NA"
+    input.subgroup="NA"
+    variable.selection="none"
 
-### CoxRegression (Main) ###
+	args <- list(...)
+	for(i in 1:length(args)) {
+		flag <- substring(args[[i]], 0, 4)
+		value <- substring(args[[i]], 5, nchar(args[[i]]))
+
+		if(value == "")
+        {
+            next;
+        }
+		if(flag=='-inp') {
+			input.surv.data.filename = value
+		} else if(flag=='-cls') {
+			input.cls.filename = value
+		} else if(flag=='-out') {
+			output.file = value
+		} else if(flag=='-tim') {
+          			time = value
+        }else if(flag=='-sta') {
+			status = value
+		} else if(flag=='-con') {
+			variable.continuous <- value
+		} else if(flag=='-cat') {
+			variable.category <- value
+		} else if(flag=='-int') {
+			variable.interaction.terms <- value
+		} else if(flag=='-str') {
+			strata <- value
+		} else if(flag=='-sub') {
+          			input.subgroup <- value
+        }else if(flag=='-sel') {
+			variable.selection <- value
+        }else{
+            stop(paste("unknown flag ", flag, " value ", value, sep=""), .call=FALSE)
+        }
+	}
+
+	CoxRegression.GP.ez(input.surv.data.filename=input.surv.data.filename,
+                            input.cls.filename=input.cls.filename,
+                            output.file=output.file,
+                            time=time,
+                            status=status,
+                            variable.continuous=variable.continuous,
+                            variable.category=variable.category,
+                            variable.interaction.terms=variable.interaction.terms,
+                            strata=strata,
+                            input.subgroup=input.subgroup,
+                            variable.selection=variable.selection
+    )
+}
 
 CoxRegression.GP.ez <- function(
   input.surv.data.filename,
@@ -40,7 +99,7 @@ CoxRegression.GP.ez <- function(
   residuals.file="residuals.png"
 
   # read input files
-  
+
   surv.data<<-read.surv.data(input.surv.data.filename)
   if (input.cls.filename!="NA"){
     cls<-read.cls(input.cls.filename)

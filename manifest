@@ -122,4 +122,4 @@ requiredPatchURLs=
 serializedModel=
 taskType=Survival Analysis
 userid=
-version=
+version=Modified the input.cls.filename parameter to be optional
