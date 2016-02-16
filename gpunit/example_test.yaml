@@ -1,0 +1,12 @@
+name: CoxRegression example from v1 documentation
+#    urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00164:1
+#    Tested on gpprod with both v1 and v1.3
+module: CoxRegression
+params:
+    input.surv.data.filename: "ftp://gpftp.broadinstitute.org/pub/genepattern/example_files/CoxRegression/surv.txt"
+    input.cls.filename: "ftp://gpftp.broadinstitute.org/pub/genepattern/example_files/CoxRegression/surv.cls"
+    time: "time"
+    status: "censor"
+    variable.category: "cls"
+assertions:
+        jobStatus: success
