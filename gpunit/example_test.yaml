@@ -4,8 +4,8 @@ name: CoxRegression Example Data
 #    with example data from v1 documentation
 module: CoxRegression
 params:
-    input.surv.data.filename: "ftp://gpftp.broadinstitute.org/pub/genepattern/example_files/CoxRegression/surv.txt"
-    input.cls.filename: "ftp://gpftp.broadinstitute.org/pub/genepattern/example_files/CoxRegression/surv.cls"
+    input.surv.data.filename: "https://datasets-genepattern-org.s3.amazonaws.com/data/test_data/CoxRegression/surv.txt"
+    input.cls.filename: "https://datasets-genepattern-org.s3.amazonaws.com/data/test_data/CoxRegression/surv.cls"
     time: "time"
     status: "censor"
     variable.category: "cls"
