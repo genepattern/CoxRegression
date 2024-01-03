@@ -2,7 +2,7 @@
 #Mon Apr 06 13:12:23 EDT 2009
 JVMLevel=2.0.1
 author=Yujin Hoshida (Broad Institute)
-categories=beta;Survival Analysis
+categories=Survival Analysis
 commandLine=<R> <libdir>CoxRegression.GP.ez.R parseCmdLine -inp<input.surv.data.filename> -cls<input.cls.filename> -out<output.file> -tim<time> -sta<status> -con<variable.continuous> -cat<variable.category> -int<variable.interaction.terms> -str<strata> -sub<input.subgroup> -sel<variable.selection>
 cpuType=any
 description=Cox regression using clinical data and .cls file
